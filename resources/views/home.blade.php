@@ -19,7 +19,13 @@
     </head>
     <body>
         <div class="container text-center">
-           <form>
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Bootstrap</a>
+                </div>
+            </nav>
+           <form action="/submit" method="POST">
+                @csrf
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -35,6 +41,11 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Отправить</button>
             </form>
+             <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Bootstrap</a>
+                </div>
+            </nav>
         </div>
     </body>
 </html>
