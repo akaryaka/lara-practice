@@ -21,5 +21,9 @@ cd myapp
 composer install
 npm install
 npm run build
+php artisan migrate
 composer run dev
 ```
+
+6. DB_FOREIGN_KEYS=true
+   DB_DATABASE=laravel(закомментить)
