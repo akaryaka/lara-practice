@@ -27,3 +27,5 @@ composer run dev
 
 6. DB_FOREIGN_KEYS=true
    DB_DATABASE=laravel(закомментить)
+
+ВАЖНО: на данный момент не надо привязывать порты лары и phpmyadmin. достаточно открывать phpmyadmin на localhost
