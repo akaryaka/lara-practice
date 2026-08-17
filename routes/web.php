@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SignUpController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,6 +15,5 @@ Route::get('/signin', function () {
     return view('signin');
 });
 
-Route::get('/signup', function () {
-    return view('signup');
-});
+Route::get('/signup', [SignUpController::class, 'create'])->name('signup');
+Route::post('/signup', [SignUpController::class, 'store']);
