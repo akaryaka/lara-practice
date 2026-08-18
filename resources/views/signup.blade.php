@@ -29,7 +29,7 @@
                 @error('email')
                     <div>{{ $message }}</div>
                 @enderror
-                <div id="emailHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту.</div>
+                <!-- <div id="emailHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту.</div> -->
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Пароль</label>

@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class SignUpController extends Controller
 {
-    public function create() 
+    public function create()
     {
         return view('signup');
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $request->validate([
             'email' => ['required', 'string', 'email', 'unique:users'],
