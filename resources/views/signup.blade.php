@@ -19,8 +19,8 @@
     </head>
     <body>
         @include('components.header')
-        <div class="container text-center">
-          <h1>Регистрация</h1>
+        <div class="container h-[100vh] flex flex-col justify-center items-center text-center">
+          <h1 class="mb-5">Регистрация</h1>
           <form action="{{ route('signup') }}" method="POST">
             @csrf
             <div class="mb-3">
