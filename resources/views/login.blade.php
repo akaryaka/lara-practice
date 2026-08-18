@@ -21,7 +21,7 @@
         @include('components.header')
         <div class="container text-center">
           <h1>Вход</h1>
-          <form action="/submit" method="POST">
+          <form action={{ route('login') }} method="POST">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
