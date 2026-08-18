@@ -11,11 +11,17 @@ class SignUpController extends Controller
 {
     public function create() 
     {
+        // dd(session('errors'));
         return view('signup');
     }
 
     public function store(Request $request) 
     {
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'check' => ['required', 'boolean']
+        ]);
         // получаем поля формы регистрации, для проверки
         // dd($request -> all());
         $user = User::create([
