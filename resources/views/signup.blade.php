@@ -20,18 +20,12 @@
     <body>
         @include('components.header')
         <div class="container text-center">
-            
           <h1>Регистрация</h1>
-          <ul>
-            {{-- @foreach ($errors->all() as $message)
-                <li>{{ $message }}</li>
-            @endforeach --}}
-          </ul>
           <form action="{{ route('signup') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" autofocus aria-describedby="emailHelp">
                 @error('email')
                     <div>{{ $message }}</div>
                 @enderror
@@ -43,13 +37,6 @@
                  @error('password')
                     <div>{{ $message }}</div>
                 @enderror
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" name="check" class="form-check-input" id="exampleCheck1">
-                 @error('check')
-                    <div>{{ $message }}</div>
-                @enderror
-                <label class="form-check-label" for="exampleCheck1">Проверить меня</label>
             </div>
             <button type="submit" class="btn btn-primary">Отправить</button>
           </form>

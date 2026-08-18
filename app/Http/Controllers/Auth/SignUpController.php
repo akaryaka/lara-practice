@@ -11,7 +11,6 @@ class SignUpController extends Controller
 {
     public function create() 
     {
-        // dd(session('errors'));
         return view('signup');
     }
 
@@ -20,7 +19,7 @@ class SignUpController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'email', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
-            'check' => ['required', 'boolean']
+            'check' => ['required']
         ]);
         // получаем поля формы регистрации, для проверки
         // dd($request -> all());
