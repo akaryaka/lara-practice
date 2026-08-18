@@ -8,13 +8,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post('/submit', function () {
-    return view('submit');
-});
-
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/profile', fn() => 'profile')->middleware('auth')->name('profile');
 
 Route::view('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
 
