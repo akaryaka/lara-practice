@@ -23,7 +23,7 @@
     @include('components.header')
     <div class="container h-[100vh] flex flex-col justify-center items-center text-center">
         <h1 class="mb-5">Вход</h1>
-        <form action={{ route('login') }} method="POST">
+        <form action='/login' method="POST">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
@@ -37,7 +37,7 @@
                 <label for="exampleInputPassword1" class="form-label">Пароль</label>
                 <input name="password" type="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn btn-primary">войти</button>
         </form>
     </div>
     @include('components.footer')

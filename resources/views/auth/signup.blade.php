@@ -21,7 +21,7 @@
         @include('components.header')
         <div class="container h-[100vh] flex flex-col justify-center items-center text-center">
           <h1 class="mb-5">Регистрация</h1>
-          <form action="{{ route('signup') }}" method="POST">
+          <form action='/signup' method="POST">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
@@ -38,7 +38,7 @@
                     <div>{{ $message }}</div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn btn-primary">зарегистрироваться</button>
           </form>
         </div>
         @include('components.footer')

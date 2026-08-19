@@ -4,19 +4,17 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
-
-use function Laravel\Prompts\alert;
 
 class LoginController extends Controller
 {
     public function create() 
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function store(Request $request) 
-
     {
         // dd($request->all());
         // валидация
@@ -30,7 +28,7 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
 
-       return back()->withErrors([
+        return back()->withErrors([
             'email' => 'Неверный email или пароль.',
         ])->withInput($request->only('email'));
     }

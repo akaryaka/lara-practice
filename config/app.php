@@ -12,6 +12,7 @@ return [
     | other UI elements where an application name needs to be displayed.
     |
     */
+    'HOME' => '/dashboard', // Измените на нужный путь
 
     'name' => env('APP_NAME', 'Laravel'),
 
