@@ -20,7 +20,7 @@
     <body>
         @include('components.header')
         <div class="container text-center">
-            <main>
+            <main class="h-[100vh]">
                 <h1>Главная</h1>
             </main>
         </div>

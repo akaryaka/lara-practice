@@ -20,8 +20,8 @@
     <body>
         @include('components.header')
         <div class="container text-center">
-            <main>
-                <h1>dashboard</h1>
+            <main class="h-[100vh]">
+                <h1 >dashboard</h1>
             </main>
         </div>
         @include('components.footer')

@@ -13,13 +13,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', function () {
         return view('profile');
     });
+
+    Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
 
 // Эти страницы доступны только гостям (неавторизованным)
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store']);
-    
+
     Route::get('/signup', [SignUpController::class, 'create'])->name('signup');
     Route::post('/signup', [SignUpController::class, 'store']);
 });

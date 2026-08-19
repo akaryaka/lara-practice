@@ -7,13 +7,8 @@
             <a class="btn btn-primary" href='/login'>вход</a>
             <a class="btn btn-primary" href='/signup'>регистрация</a>
           @else
-            <a href="/dashboard">Панель управления</a>
-            <form method="POST" action="/login">
-                @csrf
-                <button type="submit">Выйти</button>
-            </form>
+            <a href="{{route('logout')}}">Выйти</a>
           @endguest
-          
         </div>
     </div>
   </nav>

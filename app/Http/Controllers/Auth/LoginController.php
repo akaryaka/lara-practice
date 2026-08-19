@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -25,11 +24,18 @@ class LoginController extends Controller
         
         // аутентификация
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('dashboard');
+            return redirect('dashboard');
         }
 
         return back()->withErrors([
             'email' => 'Неверный email или пароль.',
         ])->withInput($request->only('email'));
+    }
+
+    public function destroy(Request $request) 
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 }

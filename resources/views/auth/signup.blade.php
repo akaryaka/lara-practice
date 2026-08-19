@@ -21,7 +21,7 @@
         @include('components.header')
         <div class="container h-[100vh] flex flex-col justify-center items-center text-center">
           <h1 class="mb-5">Регистрация</h1>
-          <form action='/signup' method="POST">
+          <form action="{{route('signup')}}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
@@ -29,12 +29,11 @@
                 @error('email')
                     <div>{{ $message }}</div>
                 @enderror
-                <!-- <div id="emailHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту.</div> -->
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Пароль</label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                 @error('password')
+                @error('password')
                     <div>{{ $message }}</div>
                 @enderror
             </div>
