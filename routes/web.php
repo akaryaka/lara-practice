@@ -2,17 +2,22 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignUpController;
+use App\Http\Controllers\Auth\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 // Эти страницы доступны только авторизованным пользователям
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $users = User::all();
+        return view('dashboard', compact('users'));
     });
     
     Route::get('/profile', function () {
         return view('profile');
     });
+
+    Route::get('/users', [UserController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 });

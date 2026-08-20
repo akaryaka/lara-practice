@@ -22,6 +22,38 @@
         <div class="container text-center">
             <main class="h-[100vh]">
                 <h1 >dashboard</h1>
+                <p>Все пользователи ({{ $users->count() }})</p>
+
+                @if(auth()->user()->isAdmin())
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2;">
+                                <th style="border: 1px solid #ddd; padding: 10px;">ID</th>
+                                <th style="border: 1px solid #ddd; padding: 10px;">Имя</th>
+                                <th style="border: 1px solid #ddd; padding: 10px;">Email</th>
+                                <th style="border: 1px solid #ddd; padding: 10px;">Роль</th>
+                                <th style="border: 1px solid #ddd; padding: 10px;">Дата регистрации</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 10px;">{{ $user->id }}</td>
+                                    <td style="border: 1px solid #ddd; padding: 10px;">{{ $user->name }}</td>
+                                    <td style="border: 1px solid #ddd; padding: 10px;">{{ $user->email }}</td>
+                                    <td style="border: 1px solid #ddd; padding: 10px;">
+                                        @if($user->isAdmin())
+                                            <span style="color: red; font-weight: bold;">Админ</span>
+                                        @else
+                                            Пользователь
+                                        @endif
+                                    </td>
+                                    <td style="border: 1px solid #ddd; padding: 10px;">{{ $user->created_at->format('d.m.Y') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
             </main>
         </div>
         @include('components.footer')
