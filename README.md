@@ -42,6 +42,14 @@ composer run dev
 - создаем таблицу с помощью cmd
 - выполняем миграцию - проверяем запись в бд(форма должна быть с валидатором!)
 
+## установка bootstrap
+
+- добавляем в шаблон @vite(['resources/css/app.css', 'resources/js/app.js'])
+- npm install bootstrap @popperjs/core
+- импорт bootstrap в файлы css, js
+- npm run dev
+- php artisan serve
+
 ## Чеклист проверки рабочего проекта
 
 # План
