@@ -4,4 +4,5 @@
   <!-- для теста -->
   <a href="{{url('/about')}}">О компании</a>
   <a href="{{url('/services')}}">Услуги</a>
+  <a href="{{url('/news')}}">Новости</a>
 @endsection

@@ -18,3 +18,7 @@ Route::post('/search', 'App\Http\Controllers\MainController@Search');
 Route::post('/subscribe', 'App\Http\Controllers\MainController@Subscribe');
 // Форма обратного звонка
 Route::post('/callback', 'App\Http\Controllers\MainController@Callback');
+
+
+// контроллер новостей
+Route::get('/news', 'App\Http\Controllers\NewsController@NewsLine');
