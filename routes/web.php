@@ -1,37 +1,20 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\SignUpController;
-use App\Http\Controllers\Auth\UserController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-// Эти страницы доступны только авторизованным пользователям
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        $users = User::all();
-        return view('dashboard', compact('users'));
-    });
-    
-    Route::get('/profile', function () {
-        return view('profile');
-    });
 
-    Route::get('/users', [UserController::class, 'dashboard'])->name('dashboard');
+// Главный контроллер - некоторые общие страницы(MainController)
+// Главная страница
+Route::get('/', 'App\Http\Controllers\MainController@Index');
+// Страница О компании
+Route::get('/about', 'App\Http\Controllers\MainController@About');
+// Страница Услуги
+Route::get('/services', 'App\Http\Controllers\MainController@Services');
 
-    Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
-});
-
-// Эти страницы доступны только гостям (неавторизованным)
-Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [LoginController::class, 'create'])->name('login');
-    Route::post('/login', [LoginController::class, 'store']);
-
-    Route::get('/signup', [SignUpController::class, 'create'])->name('signup');
-    Route::post('/signup', [SignUpController::class, 'store']);
-});
-
-// Главная страница доступна всем
-Route::get('/', function () {
-    return view('home');
-});
+// Обработка форм
+// Поиск
+Route::post('/search', 'App\Http\Controllers\MainController@Search');
+// Подписка на новости
+Route::post('/subscribe', 'App\Http\Controllers\MainController@Subscribe');
+// Форма обратного звонка
+Route::post('/callback', 'App\Http\Controllers\MainController@Callback');
