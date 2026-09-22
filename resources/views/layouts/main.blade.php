@@ -8,7 +8,6 @@
 </head>
 <body>
   @include('./../frontend/header')
-  <button class="btn btn-primary"></button>
   @include('./../frontend/footer')
 </body>
 </html>
