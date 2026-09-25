@@ -19,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/login', [LoginController::class, 'Index']);
 Route::get('/register', [RegisterController::class, 'Index']);
+
+Route::post('/submit', [RegisterController::class, 'submitForm']);
