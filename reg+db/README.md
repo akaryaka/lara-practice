@@ -36,7 +36,6 @@ composer run dev
 - php artisan make:controller Auth/SignInController
 
 ## Тестирование подключения к бд
-
 - создаем бд в phpmyadmin
 - прописываем ее в .env
 - создаем таблицу с помощью cmd
