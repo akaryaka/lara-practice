@@ -1,12 +1,14 @@
 @extends('layout')
 @section('content')
   <h1>register</h1>
-  <form method="POST" >
+  <form method="POST" action="{{ route('register.store') }}">
     @csrf
-    <input name="name" type="text" placeholder="name">
-    <input name="email" type="text" placeholder="email">
-    <input name="password" type="text" placeholder="password">
-    <input name="phone" type="text" placeholder="phone">
-    <button type="submit">регистрация</button>
+    
+    <input name="name" type="text" placeholder="Имя" required>
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="password" type="password" placeholder="Пароль" required>
+    <input name="phone" type="text" placeholder="Телефон" required>
+    
+    <button type="submit">Зарегистрироваться</button>
   </form>
 @endsection

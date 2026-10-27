@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Auth::routes();
-
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
 
+// GET-маршрут для отображения формы (с именем 'register')
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+
+// POST-маршрут для обработки отправки формы
+Route::post('/register', [RegisterController::class, 'register'])->name('register.store');

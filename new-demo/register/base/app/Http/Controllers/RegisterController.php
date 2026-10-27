@@ -14,23 +14,26 @@ class RegisterController extends Controller
     }
     public function register(Request $request)
     {
-        dd('Форма отправлена!', $request->all());
-         $validated = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email',
-            'password' => 'required|string|min:8',
+        // 1. Валидация данных
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed', // Рекомендуется добавить подтверждение пароля
             'phone' => 'required|string|min:8',
         ]);
 
         // 2. Создание пользователя
-        User::create([
+        $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'password' => Hash::make($validated['password']), // Хешируем пароль
-            'phone' => $validated['name'],
+            'password' => Hash::make($validated['password']),
+            'phone' => $validated['phone'],
         ]);
 
-        // 3. Редирект с сообщением об успехе
+        // 3. (Опционально) Автоматическая авторизация после регистрации
+        // Auth::login($user);
+
+        // 4. Редирект на страницу входа или главную с сообщением
         return redirect()->route('register')->with('success', 'Регистрация прошла успешно! Теперь вы можете войти.');
     }
 }
