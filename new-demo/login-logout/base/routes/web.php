@@ -18,10 +18,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+// GET-маршрут для отображения формы (с именем 'login')
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+// POST-маршрут для обработки отправки формы
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
 // GET-маршрут для отображения формы (с именем 'register')
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-
 // POST-маршрут для обработки отправки формы
 Route::post('/register', [RegisterController::class, 'register'])->name('register.store');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

@@ -6,5 +6,9 @@
   @endguest
   @auth
     Привет, <span>{{ Auth::user()->name }}</span>
+    <form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <button type="submit">logout</button>
+    </form>
   @endauth
 </header>
