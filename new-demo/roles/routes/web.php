@@ -29,3 +29,10 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.store');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+// === НОВЫЕ МАРШРУТЫ ПОСЛЕ ВХОДА ===
+// Обычный пользователь
+Route::get('/dashboard', [HomeController::class, 'userDashboard'])->name('dashboard');
+// Администратор (формально открыт, но защищен внутри HomeController::adminDashboard)
+Route::get('/admin', [HomeController::class, 'adminDashboard'])->name('admin.dashboard');

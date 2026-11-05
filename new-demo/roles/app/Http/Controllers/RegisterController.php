@@ -28,6 +28,7 @@ class RegisterController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'phone' => $validated['phone'],
+            'role' => 'user'
         ]);
 
         // Редирект на страницу входа или главную с сообщением
