@@ -29,3 +29,18 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.store');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+// === НОВЫЕ МАРШРУТЫ ПОСЛЕ ВХОДА ===
+// Обычный пользователь
+Route::get('/dashboard', [HomeController::class, 'userDashboard'])->name('dashboard');
+// Администратор (формально открыт, но защищен внутри HomeController::adminDashboard)
+Route::get('/admin', [HomeController::class, 'adminDashboard'])->name('admin.dashboard');
+
+Route::middleware('auth')->group(function () {
+    // Обычный пользователь создает заявку
+    Route::post('/tickets', [App\Http\Controllers\TicketController::class, 'store'])->name('tickets.store');
+    
+    // Администратор смотрит все заявки
+    Route::get('/admin/tickets', [App\Http\Controllers\TicketController::class, 'adminIndex'])->name('admin.tickets');
+});
