@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -39,8 +40,8 @@ Route::get('/admin', [HomeController::class, 'adminDashboard'])->name('admin.das
 
 Route::middleware('auth')->group(function () {
     // Обычный пользователь создает заявку
-    Route::post('/tickets', [App\Http\Controllers\TicketController::class, 'store'])->name('tickets.store');
+    Route::post('/application', [AplicationController::class, 'store'])->name('application.store');
     
     // Администратор смотрит все заявки
-    Route::get('/admin/tickets', [App\Http\Controllers\TicketController::class, 'adminIndex'])->name('admin.tickets');
+    Route::get('/admin/applications', [ApplicationController::class, 'adminIndex'])->name('admin.applications');
 });

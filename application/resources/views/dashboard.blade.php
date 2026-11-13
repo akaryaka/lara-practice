@@ -6,7 +6,7 @@
     @endif
 
     <h3>Создание новой заявки</h3>
-    <form action="{{ route('tickets.store') }}" method="POST">
+    <form action="{{ route('application.store') }}" method="POST">
         @csrf
         <div style="margin-bottom: 10px;">
             <label>Тема:</label><br>
@@ -23,11 +23,10 @@
 
     <h3>Мои заявки</h3>
     <ul>
-        @forelse(Auth::user()->tickets as $ticket)
+        @forelse(Auth::user()->applications as $application)
             <li>
-                <strong>{{ $ticket->title }}</strong> (Статус: {{ $ticket->status }})<br>
-                {{ $ticket->description }} <br>
-                <small>Дата: {{ $ticket->created_at->format('d.m.Y H:i') }}</small>
+                <strong>{{ $application->title }}</strong> (Статус: {{ $application->status }})<br>
+                {{ $application->description }} <br>
             </li>
         @empty
             <li>У вас пока нет заявок.</li>

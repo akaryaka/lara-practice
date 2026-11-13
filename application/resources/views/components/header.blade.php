@@ -19,12 +19,5 @@
         @csrf
         <button type="submit">Выйти</button>
     </form>
-@endauth
-  {{-- @auth
-    Привет, <span>{{ Auth::user()->name }}</span>
-    <form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <button type="submit">logout</button>
-    </form>
-  @endauth --}}
+  @endauth  
 </header>

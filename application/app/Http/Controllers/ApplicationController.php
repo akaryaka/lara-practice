@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ticket;
+use App\Models\Application;
 
 use Illuminate\Support\Facades\Auth;
 
-class TicketController extends Controller
+class ApplicationController extends Controller
 {
         // Обработка формы создания заявки (для обычного пользователя)
     public function store(Request $request)
@@ -29,14 +29,13 @@ class TicketController extends Controller
     // Просмотр всех заявок (только для админа)
     public function adminIndex()
     {
-        // Используем вашу существующую логику проверки
         if (!Auth::check() || !Auth::user()->isAdmin()) {
             return redirect('/dashboard')->with('error', 'Доступ запрещен');
         }
 
         // Получаем все заявки с данными пользователей, сортируем по новым
-        $tickets = Ticket::with('user')->latest()->get();
+        $application = Application::with('user')->latest()->get();
         
-        return view('admin.tickets', compact('tickets'));
+        return view('admin.application', compact('application'));
     }
 }
