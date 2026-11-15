@@ -18,7 +18,7 @@ class ApplicationController extends Controller
         ]);
 
         // Создаем заявку, привязывая её к текущему пользователю
-        Auth::user()->tickets()->create([
+        Auth::user()->applications()->create([
             'title' => $request->title,
             'description' => $request->description,
         ]);

@@ -16,6 +16,14 @@
             <label>Описание:</label><br>
             <textarea name="description" rows="4" required style="width: 300px;"></textarea>
         </div>
+        <div>
+            <label>category</label>
+            <select name="category" id="category">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+        </div>
         <button type="submit">Создать заявку</button>
     </form>
 
