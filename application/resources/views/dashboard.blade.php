@@ -51,12 +51,31 @@
     <hr>
 
     <h3>Мои заявки</h3>
-    @forelse(Auth::user()->applications ?? [] as $item)
-        <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; background: #f9f9f9;">
+    {{-- <h3>Мои заявки</h3> --}}
+@forelse(Auth::user()->applications ?? [] as $item)
+    <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; background: #f9f9f9; display: flex; gap: 15px;">
+        
+        {{-- Картинка категории --}}
+        <div style="flex-shrink: 0;">
+            @if(config('categories.' . $item->category . '.image'))
+                <img src="{{ asset('images/categories/' . config('categories.' . $item->category . '.image')) }}" 
+                     alt="{{ config('categories.' . $item->category . '.name', 'Категория') }}" 
+                     style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #ddd;">
+                <p style="margin: 5px 0 0 0; font-size: 12px; color: #666; text-align: center;">
+                    {{ config('categories.' . $item->category . '.name', 'Категория') }}
+                </p>
+            @else
+                <div style="width: 80px; height: 80px; background: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999;">
+                    Нет
+                </div>
+            @endif
+        </div>
+        
+        {{-- Информация о заявке --}}
+        <div style="flex-grow: 1;">
             <div style="display: flex; justify-content: space-between; align-items: start;">
                 <div>
                     <h4 style="margin: 0 0 10px 0;">{{ $item->title }}</h4>
-                    <p style="margin: 5px 0;"><strong>Категория:</strong> {{ $item->category }}</p>
                     <p style="margin: 5px 0;"><strong>Описание:</strong> {{ $item->description }}</p>
                     <p style="margin: 5px 0; color: gray; font-size: 12px;">
                         Создано: {{ $item->created_at->format('d.m.Y H:i') }}
@@ -88,7 +107,9 @@
                 </div>
             </div>
         </div>
-    @empty
-        <p>У вас пока нет заявок.</p>
-    @endforelse
+    </div>
+@empty
+    <p>У вас пока нет заявок.</p>
+@endforelse
+    
 @endsection

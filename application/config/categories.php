@@ -1,20 +1,16 @@
 <?php
 
 return [
-    'plumbing' => [
-        'name' => 'Сантехника',
-        'image' => 'categories/plumbing.png'
+    'category1' => [
+        'name' => 'category1',
+        'image' => 'cat.jpg'
     ],
-    'electrical' => [
-        'name' => 'Электрика',
-        'image' => 'categories/electrical.png'
+    'category2' => [
+        'name' => 'category2',
+        'image' => 'love.jpeg'
     ],
-    'cleaning' => [
-        'name' => 'Уборка',
-        'image' => 'categories/cleaning.png'
-    ],
-    'other' => [
-        'name' => 'Другое',
-        'image' => 'categories/other.png'
+    'category3' => [
+        'name' => 'category3',
+        'image' => 'wolf.jpeg'
     ],
 ];
