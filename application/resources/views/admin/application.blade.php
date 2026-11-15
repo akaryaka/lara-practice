@@ -5,7 +5,7 @@
     
     <p><a href="{{ route('admin.dashboard') }}">← Вернуться в админ-панель</a></p>
 
-    @if($tickets->isEmpty())
+    @if($application->isEmpty())
         <p>Заявок пока нет.</p>
     @else
         <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
@@ -20,14 +20,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($tickets as $ticket)
+                @foreach($application as $item)
                     <tr>
-                        <td>{{ $ticket->id }}</td>
-                        <td>{{ $ticket->user->name }}<br><small>{{ $ticket->user->email }}</small></td>
-                        <td>{{ $ticket->title }}</td>
-                        <td>{{ $ticket->description }}</td>
-                        <td>{{ $ticket->status }}</td>
-                        <td>{{ $ticket->created_at->format('d.m.Y H:i') }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->user->name }}<br><small>{{ $item->user->email }}</small></td>
+                        <td>{{ $item->title }}</td>
+                        <td>{{ $item->description }}</td>
+                        <td>{{ $item->status }}</td>
+                        <td>{{ $item->created_at->format('d.m.Y H:i') }}</td>
                     </tr>
                 @endforeach
             </tbody>

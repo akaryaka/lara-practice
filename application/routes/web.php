@@ -40,7 +40,7 @@ Route::get('/admin', [HomeController::class, 'adminDashboard'])->name('admin.das
 
 Route::middleware('auth')->group(function () {
     // Обычный пользователь создает заявку
-    Route::post('/application', [AplicationController::class, 'store'])->name('application.store');
+    Route::post('/application', [ApplicationController::class, 'store'])->name('application.store');
     
     // Администратор смотрит все заявки
     Route::get('/admin/applications', [ApplicationController::class, 'adminIndex'])->name('admin.applications');
