@@ -45,3 +45,7 @@ Route::middleware('auth')->group(function () {
     // Администратор смотрит все заявки
     Route::get('/admin/applications', [ApplicationController::class, 'adminIndex'])->name('admin.applications');
 });
+
+// Роут для обновления статуса заявки (только для админа)
+Route::post('/admin/application/{application}/status', [ApplicationController::class, 'updateStatus'])
+    ->name('application.updateStatus');

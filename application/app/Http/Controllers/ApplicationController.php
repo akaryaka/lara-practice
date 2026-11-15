@@ -41,4 +41,23 @@ public function store(Request $request)
         
         return view('admin.application', compact('application'));
     }
+    public function updateStatus(Request $request, Application $application)
+{
+    // Проверяем, что пользователь - админ
+    if (!Auth::check() || !Auth::user()->isAdmin()) {
+        return redirect('/dashboard')->with('error', 'Доступ запрещен');
+    }
+
+    // Валидация
+    $request->validate([
+        'status' => 'required|string|in:new,in_progress,completed,rejected',
+    ]);
+
+    // Обновляем статус
+    $application->update([
+        'status' => $request->status,
+    ]);
+
+    return back()->with('success', 'Статус заявки обновлен!');
+}
 }
